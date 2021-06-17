@@ -8,13 +8,14 @@ public class MovableObs : MonoBehaviour
 	public bool horizontal = true; //If the movement is horizontal or vertical
 	public float speed = 3f;
 	public float offset = 0f; //If yo want to modify the position at the start 
-
+	public bool randomOffset = true; 
 	private bool isForward = true; //If the movement is out
 	private Vector3 startPos;
    
     void Awake()
     {
 		startPos = transform.position;
+		if (randomOffset) offset = Random.Range(0, distance);
 		if (horizontal)
 			transform.position += Vector3.right * offset;
 		else
