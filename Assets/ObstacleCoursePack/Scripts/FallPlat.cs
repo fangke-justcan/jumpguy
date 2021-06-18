@@ -5,18 +5,23 @@ using UnityEngine;
 public class FallPlat : MonoBehaviour
 {
 	public float fallTime = 0.5f;
+	public bool ifFall = true;
 
 
 	void OnCollisionEnter(Collision collision)
 	{
-		foreach (ContactPoint contact in collision.contacts)
+		if (ifFall)
 		{
-			//Debug.DrawRay(contact.point, contact.normal, Color.white);
-			if (collision.gameObject.tag == "Player")
+			foreach (ContactPoint contact in collision.contacts)
 			{
-				StartCoroutine(Fall(fallTime));
+				//Debug.DrawRay(contact.point, contact.normal, Color.white);
+				if (collision.gameObject.tag == "Player")
+				{
+					StartCoroutine(Fall(fallTime));
+				}
 			}
-		}
+        }
+		
 	}
 
 	IEnumerator Fall(float time)
