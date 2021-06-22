@@ -27,10 +27,10 @@ public class CharacterControls : MonoBehaviour {
 
 	public Vector3 checkPoint;
 	private bool slide = false;
-
+	public Material m; 
 	void  Start (){
 		// get the distance to ground
-		distToGround = GetComponent<Collider>().bounds.extents.y;
+		distToGround = GetComponent<Collider>().bounds.extents.y; 
 	}
 	
 	bool IsGrounded (){
@@ -143,6 +143,13 @@ public class CharacterControls : MonoBehaviour {
 				slide = false;
 			}
 		}
+
+		//  Setting player alpha for dissolving shader 
+		float alpha;
+		if (transform.position.y > 0) alpha = Mathf.InverseLerp(10, 2f, transform.position.y);
+		else alpha = Mathf.InverseLerp(-30f, -1f, transform.position.y); 
+		m.SetFloat("_dissolveAmount", alpha);
+		//
 	}
 
 	float CalculateJumpVerticalSpeed () {
@@ -162,7 +169,7 @@ public class CharacterControls : MonoBehaviour {
 
 	public void LoadCheckPoint()
 	{
-		transform.position = checkPoint;
+		transform.position = checkPoint + new Vector3(0,10,0);
 	}
 
 	private IEnumerator Decrease(float value, float duration)
