@@ -16,7 +16,7 @@ public class CharacterControls : MonoBehaviour {
 	private Vector3 moveDir;
 	public GameObject cam;
 	private Rigidbody rb;
-
+	
 	private float distToGround;
 
 	private bool canMove = true; //If player is not hitted
@@ -47,7 +47,7 @@ public class CharacterControls : MonoBehaviour {
 	}
 	
 	void FixedUpdate () {
-		if (canMove)
+		if (canMove & !FindObjectOfType<GameManager>().menuOn)
 		{
 			if (moveDir.x != 0 || moveDir.z != 0)
 			{
