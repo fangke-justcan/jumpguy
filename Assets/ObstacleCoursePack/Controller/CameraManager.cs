@@ -79,8 +79,12 @@ public class CameraManager : MonoBehaviour {
 			targetSpeed = controllerSpeed; 
 		}*/
 
-		FollowTarget(Time.deltaTime); //Follow player
-		HandleRotations(Time.deltaTime, v, h, targetSpeed); //Rotates camera
+		if (!FindObjectOfType<GameManager>().menuOn)
+		{
+			FollowTarget(Time.deltaTime); //Follow player
+			HandleRotations(Time.deltaTime, v, h, targetSpeed); //Rotates camera
+		}
+		
 	}
 
 	private void LateUpdate()
@@ -100,7 +104,7 @@ public class CameraManager : MonoBehaviour {
 		}
 		// check if the distance is greater than the max camera distance;
 		if (dist > cameraDist) dist = cameraDist;
-		camTrans.localPosition = new Vector3(0, 0, -dist);
+		 camTrans.localPosition = new Vector3(0, 0, -dist);
 	}
 
 	public static CameraManager singleton; //You can call CameraManager.singleton from other script (There can be only one)
