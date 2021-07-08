@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviour
     public void quitButtionClicked()
     {
         Time.timeScale = 1;
-        SceneManager.LoadSceneAsync(0, LoadSceneMode.Single);
-        
+        StartCoroutine(LoadScene(0));
+
     }
 
     public void optionButtonClicked()
@@ -54,6 +54,12 @@ public class GameManager : MonoBehaviour
     {
          GetComponent<AudioSource>().volume = VolumeSlider.value ;
            // Debug.Log(GetComponent<AudioSource>().volume); 
+    }
+
+    IEnumerator LoadScene(int index)
+    {
+        SceneManager.LoadScene(index);
+        yield return new WaitForSeconds(3f);
     }
 
     void Start()
@@ -111,13 +117,13 @@ public class GameManager : MonoBehaviour
                 break;
             case GameMode.Die:
                 Debug.Log("Died - Reseting");
-                SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
+                StartCoroutine( LoadScene(1));
               
                 break;
             case GameMode.Win:
                 Debug.Log("Win - Reseting");
-                SceneManager.LoadSceneAsync(1, LoadSceneMode.Single);
-                
+                StartCoroutine(LoadScene(1));
+
 
 
                 break;
