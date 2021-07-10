@@ -15,6 +15,7 @@ public class CharacterControls : MonoBehaviour {
 	public float rotateSpeed = 25f; //Speed the player rotate
 	private Vector3 moveDir;
 	public GameObject cam;
+	
 	private Rigidbody rb;
 
 	private float distToGround;
@@ -24,7 +25,7 @@ public class CharacterControls : MonoBehaviour {
 	private bool wasStuned = false; //If player was stunned before get stunned another time
 	private float pushForce;
 	private Vector3 pushDir;
-
+	public Animator anim;
 	public Vector3 checkPoint;
 	private bool slide = false;
 
@@ -44,6 +45,8 @@ public class CharacterControls : MonoBehaviour {
 
 		checkPoint = transform.position;
 		Cursor.visible = false;
+		anim.SetBool("ifMove", false);
+		anim.SetBool("ifJump", false);
 	}
 	
 	void FixedUpdate () {
@@ -59,11 +62,15 @@ public class CharacterControls : MonoBehaviour {
 				Quaternion tr = Quaternion.LookRotation(targetDir); //Rotation of the character to where it moves
 				Quaternion targetRotation = Quaternion.Slerp(transform.rotation, tr, Time.deltaTime * rotateSpeed); //Rotate the character little by little
 				transform.rotation = targetRotation;
+				anim.SetBool("ifMove", true);
 			}
+			else anim.SetBool("ifMove", false);
 
 			if (IsGrounded())
 			{
-			 // Calculate how fast we should be moving
+				anim.SetBool("ifJump", false);
+
+				// Calculate how fast we should be moving
 				Vector3 targetVelocity = moveDir;
 				targetVelocity *= speed;
 
@@ -93,6 +100,8 @@ public class CharacterControls : MonoBehaviour {
 				if (IsGrounded() && Input.GetButton("Jump"))
 				{
 					rb.velocity = new Vector3(velocity.x, CalculateJumpVerticalSpeed(), velocity.z);
+					
+					anim.SetBool("ifJump", true);
 				}
 			}
 			else
