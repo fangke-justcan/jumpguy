@@ -25,7 +25,7 @@ public class BananaMan : MonoBehaviour
         
         ballInHand.AddComponent<Rigidbody>();
         Vector3 dir = (player.position - ballInHand.transform.position).normalized; 
-        ballInHand.GetComponent<Rigidbody>().AddForce(dir * 2000);
+        ballInHand.GetComponent<Rigidbody>().AddForce(dir * 4000);
         ballInHand.GetComponent<Rigidbody>().mass = 10000;
 
         ballInHand.transform.SetParent(null);
