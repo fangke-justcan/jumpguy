@@ -1188,8 +1188,10 @@ GameObject:
   - component: {fileID: 221841262}
   - component: {fileID: 221841261}
   - component: {fileID: 221841265}
+  - component: {fileID: 221841266}
+  - component: {fileID: 221841267}
   m_Layer: 0
-  m_Name: New VFX
+  m_Name: BM VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1210,6 +1212,8 @@ MonoBehaviour:
   m_ExecuteInEditor: 1
   m_Bindings:
   - {fileID: 221841265}
+  - {fileID: 221841266}
+  - {fileID: 221841267}
   m_VisualEffect: {fileID: 221841263}
 --- !u!73398921 &221841262
 VFXRenderer:
@@ -1231,7 +1235,6 @@ VFXRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -1292,6 +1295,15 @@ VisualEffect:
       - m_Value: {x: 1, y: 1, z: 1}
         m_Name: CamTransform_scale
         m_Overridden: 1
+      - m_Value: {x: 2.246501, y: 359.9803, z: -0.0007723457}
+        m_Name: HeadTransform_angles
+        m_Overridden: 1
+      - m_Value: {x: -6.4914227, y: 3.9020743, z: 111.45904}
+        m_Name: HeadTransform_position
+        m_Overridden: 1
+      - m_Value: {x: 1, y: 1, z: 1}
+        m_Name: HeadTransform_scale
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
@@ -1316,7 +1328,10 @@ VisualEffect:
         m_Name: jointMeshRenderer
         m_Overridden: 1
     m_Bool:
-      m_Array: []
+      m_Array:
+      - m_Value: 1
+        m_Name: ifAlert
+        m_Overridden: 1
 --- !u!4 &221841264
 Transform:
   m_ObjectHideFlags: 0
@@ -1346,6 +1361,37 @@ MonoBehaviour:
   m_Property:
     m_Name: BMTransform
   Target: {fileID: 607207470}
+--- !u!114 &221841266
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221841260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90ac596c74cd82a4c906be06f710c862, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  check: 0
+  m_Property:
+    m_Name: ifAlert
+  Target: {fileID: 1491206233}
+--- !u!114 &221841267
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221841260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fdfea1f838247c40921a07afedde962, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: HeadTransform
+  Target: {fileID: 941896587}
 --- !u!137 &225747404 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 6218187984205809937, guid: ce2aa1235d3277a43b4972c024aa4cd1, type: 3}
@@ -10773,6 +10819,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de4e8ae22411dba4f971edf49f8738f2, type: 3}
+--- !u!4 &941896587 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4962371133787013239, guid: ce2aa1235d3277a43b4972c024aa4cd1, type: 3}
+  m_PrefabInstance: {fileID: 4677778099300769920}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &953275738
 GameObject:
   m_ObjectHideFlags: 0
@@ -13580,6 +13631,11 @@ MeshFilter:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4416347176131427356, guid: 3925e022072f0474a8dab88c2fdaf0ce, type: 3}
   m_PrefabInstance: {fileID: 1734457991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1491206233 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2817459911931503061, guid: ce2aa1235d3277a43b4972c024aa4cd1, type: 3}
+  m_PrefabInstance: {fileID: 4677778099300769920}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1498339788
 GameObject:
@@ -18188,6 +18244,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1074856740}
+    - target: {fileID: 112473460, guid: ce2aa1235d3277a43b4972c024aa4cd1, type: 3}
+      propertyPath: _data._json
+      value: '{"declarations":{"collection":{"$content":[{"name":"currentWaypoints","value":{"$content":0,"$type":"System.Int32"},"$version":"A"},{"name":"triggerIdle","value":{"$content":false,"$type":"System.Boolean"},"$version":"A"},{"name":"startDetectionRay","value":{"$content":0,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"LookAtDummy","value":{"$content":1,"$type":"UnityEngine.Object"},"$version":"A"},{"name":"moveSpeed","value":{"$content":1.0,"$type":"System.Single"},"$version":"A"},{"name":"ifAlert","value":{"$content":2,"$type":"UnityEngine.Object"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 112473460, guid: ce2aa1235d3277a43b4972c024aa4cd1, type: 3}
+      propertyPath: _data._objectReferences.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 112473460, guid: ce2aa1235d3277a43b4972c024aa4cd1, type: 3}
+      propertyPath: _data._objectReferences.Array.data[2]
+      value: 
+      objectReference: {fileID: 1491206233}
+    - target: {fileID: 2817459911931503061, guid: ce2aa1235d3277a43b4972c024aa4cd1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5143241723337192360, guid: ce2aa1235d3277a43b4972c024aa4cd1, type: 3}
       propertyPath: m_RootOrder
       value: 15
@@ -18235,10 +18307,6 @@ PrefabInstance:
     - target: {fileID: 5488664964359743762, guid: ce2aa1235d3277a43b4972c024aa4cd1, type: 3}
       propertyPath: m_Name
       value: Banana Man
-      objectReference: {fileID: 0}
-    - target: {fileID: 6218187984205809937, guid: ce2aa1235d3277a43b4972c024aa4cd1, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce2aa1235d3277a43b4972c024aa4cd1, type: 3}
