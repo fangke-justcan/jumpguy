@@ -51,10 +51,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -79,6 +81,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &5263193849274771168
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +95,7 @@ GameObject:
   - component: {fileID: 5263193849274771171}
   - component: {fileID: 5263193849274771170}
   - component: {fileID: 5263193849274771169}
+  - component: {fileID: 5875224692353668131}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -132,14 +136,16 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: af19a61c0cc985d4d91ca0e18b899983, type: 2}
+  - {fileID: 2100000, guid: 5f005ffa86c45e34aaed88738fde7977, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -160,6 +166,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!135 &5263193849274771170
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -187,6 +194,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   force: 25
   stunTime: 0.5
+--- !u!114 &5875224692353668131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263193849274771168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 528c0985e92c54843b0565fc3f6f2191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5263193850122822931
 GameObject:
   m_ObjectHideFlags: 0
